@@ -1,0 +1,38 @@
+<resources>
+
+<!--
+Base application theme, dependent on API level. This theme is replaced
+by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+-->
+<style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+<!--
+Theme customizations available in newer API levels can go in
+res/values-vXX/styles.xml, while customizations related to
+backward-compatibility can go here.
+Theme.Janrain
+Theme.Janrain.Light
+Theme.Holo.Light.DarkActionBar
+Theme.Holo.Light
+Theme.Light
+Theme.Holo
+Theme - This is the base Android theme introduced with the 
+first version of Android. It is a dark theme with 
+light text and works on all versions of Android. 
+It may vary from device to device according to manufacturer or carrier 
+alterations (such as HTC Sense)
+-->
+</style>
+
+<!-- Application theme. -->
+<style name="AppTheme" parent="AppBaseTheme">
+<!-- All customizations that are NOT specific to a particular API-level can go here. -->
+</style>
+
+<!-- Listview theme. -->
+<style name="ListView">
+<item name="android:background">#00000000</item>
+<item name="android:cacheColorHint">#00000000</item>
+<item name="android:listSelector">@drawable/list_selector</item>
+</style>
+
+</resources>

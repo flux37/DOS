@@ -1,0 +1,16 @@
+TO DO:
+
+Set 1. Fetch data from Google Calendar and store it in SQL.
+	-this script should sync frequently with the google servers.
+	-should handle sorting into categories.
+Set 2. Fetch queried data from SQL and put in on APACHE server.
+	-this should implement converting data from tables into JSON format.
+Set 3. The JSON data recieved should be implemented in the frontend.
+	-convert json data into respective variables and display.
+Set 4. Queries from front end sent to server.
+	-front end contains 3 tabs.
+	-should store personal data (starred events) of each user.
+	-should query for data to be categorized according to event type.
+	-...
+	
+NOTE: Add points that are left out.

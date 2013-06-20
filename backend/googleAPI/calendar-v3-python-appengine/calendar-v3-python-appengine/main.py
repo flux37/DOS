@@ -36,6 +36,20 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
+# User Imports
+from oauth2client.client import OAuth2WebServerFlow
+from google.appengine.ext import db
+# from oauth2client.appengine import CredentialsProperty
+# from google.appengine.api import users
+# from oauth2client.appengine import StorageByKeyName
+
+# class CredentialsModel(db.Model):
+#   credentials = CredentialsProperty()
+# 
+# user = users.get_current_user()
+# storage = StorageByKeyName(CredentialsModel, user.user_id(), 'credentials')
+# credentials = storage.get()
+
 
 # CLIENT_SECRETS, name of a file containing the OAuth 2.0 information for this
 # application, including client_id and client_secret.
@@ -59,6 +73,44 @@ href="https://code.google.com/apis/console">APIs Console</a>.
 
 """ % CLIENT_SECRETS
 
+#
+#FLAGS = gflags.FLAGS
+
+# Set up a Flow object to be used if we need to authenticate. This
+# sample uses OAuth 2.0, and we set up the OAuth2WebServerFlow with
+# the information it needs to authenticate. Note that it is called
+# the Web Server Flow, but it can also handle the flow for native
+# applications
+# The client_id and client_secret are copied from the API Access tab on
+# the Google APIs Console
+#FLOW = OAuth2WebServerFlow(
+#    client_id='YOUR_CLIENT_ID',
+#    client_secret='YOUR_CLIENT_SECRET',
+#    scope='https://www.googleapis.com/auth/calendar',
+#    user_agent='YOUR_APPLICATION_NAME/YOUR_APPLICATION_VERSION')
+#
+# To disable the local server feature, uncomment the following line:
+# FLAGS.auth_local_webserver = False
+#
+# If the Credentials don't exist or are invalid, run through the native client
+# flow. The Storage object will ensure that if successful the good
+# Credentials will get written back to a file.
+#storage = Storage('calendar.dat')
+#credentials = storage.get()
+#if credentials is None or credentials.invalid == True:
+#  credentials = run(FLOW, storage)
+
+# Create an httplib2.Http object to handle our HTTP requests and authorize it
+# with our good Credentials.
+#http = httplib2.Http()
+#http = credentials.authorize(http)
+
+# Build a service object for interacting with the API. Visit
+# the Google APIs Console
+# to get a developerKey for your own application.
+#service = build(serviceName='calendar', version='v3', http=http,
+#       developerKey='YOUR_DEVELOPER_KEY')
+#"""
 
 http = httplib2.Http(memcache)
 service = build("calendar", "v3", http=http)

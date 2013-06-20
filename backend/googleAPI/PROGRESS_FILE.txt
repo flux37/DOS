@@ -1,0 +1,8 @@
+Auth done :).
+credentials stored in keyring.
+access into calendar gained.
+
+
+need to do:
+read events list from calendar / calendar feed.
+store in SQL server.

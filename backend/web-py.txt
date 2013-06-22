@@ -1,0 +1,17 @@
+To test run the above module (fun-webpy):
+	a. Install mysql 
+	b. Install mysqldb python
+	c. Install web-py
+	
+	Heres a link if you need (you wont but still) http://zetcode.com/db/mysqlpython/
+	
+Running the app:
+	After you have the modules installed create a new database and a table
+	Run the webpy module: $ python main.py
+	Go to the URL (which by default is: http://0.0.0.0:8080/)
+	
+Usage:
+	So after you have the web-app running you can go to any of the URLs defined in main.py
+	a. '/' : Will just print out a error
+	b. '/category' : Will give json data for all the clubs
+	c. '/category/tech' : Will give json data for all the clubs that are of category 'tech'

@@ -25,7 +25,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Simple command-line sample for the Google Calendar API.
+"""Command-line code for the Google Calendar API.
 
 Command-line application that authenticates google calendar and performs
 read operations.
@@ -127,7 +127,34 @@ def main(argv):
 
   try:
 
-    print "Rushab Rox"
+    # print "Rushab Rox"
+    """page_token = None
+    while True:
+      events = service.events().list(calendarId='primary', pageToken=page_token).execute()
+      if events['items']:
+        for event in events['items']:
+          print event['summary']
+      page_token = events.get('nextPageToken')
+      if not page_token:
+        break"""
+    page_token = None
+    while True:
+      calendar_list = service.calendarList().list(pageToken=page_token).execute()
+      if calendar_list['items']:
+        for calendar_list_entry in calendar_list['items']:
+          print calendar_list_entry['summary'] + " :: " + calendar_list_entry['id']
+          page_token_two = None
+          while True:
+            events = service.events().list(calendarId=calendar_list_entry['id'], pageToken=page_token_two).execute()
+            if events['items']:
+              for event in events['items']:
+                print event['summary']
+            page_token_two = events.get('nextPageToken')
+            if not page_token_two:
+              break
+      page_token = calendar_list.get('nextPageToken')
+      if not page_token:
+        break
 
   except AccessTokenRefreshError:
     print ("The credentials have been revoked or expired, please re-run"

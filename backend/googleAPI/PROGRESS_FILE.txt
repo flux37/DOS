@@ -1,8 +1,13 @@
+DONE:
+
 Auth done :).
-credentials stored in keyring.
+credentials stored in datastore.
 access into calendar gained.
+read events from primary and shared calendars.
+store events in datastore.
+print on screen.
 
+TO-DO:
 
-need to do:
-read events list from calendar / calendar feed.
-store in SQL server.
+form a database model.
+integrate with rest of the project.

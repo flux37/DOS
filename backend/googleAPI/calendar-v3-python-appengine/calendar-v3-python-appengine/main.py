@@ -27,6 +27,7 @@ import httplib2
 import logging
 import os
 import pickle
+import json
 
 from apiclient.discovery import build
 from oauth2client.appengine import oauth2decorator_from_clientsecrets
@@ -35,21 +36,11 @@ from google.appengine.api import memcache
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
-
-# User Imports
-from oauth2client.client import OAuth2WebServerFlow
 from google.appengine.ext import db
-# from oauth2client.appengine import CredentialsProperty
-# from google.appengine.api import users
-# from oauth2client.appengine import StorageByKeyName
 
-# class CredentialsModel(db.Model):
-#   credentials = CredentialsProperty()
-# 
-# user = users.get_current_user()
-# storage = StorageByKeyName(CredentialsModel, user.user_id(), 'credentials')
-# credentials = storage.get()
-
+class Event(db.Model):
+  event_cal = db.StringProperty()
+  event_summary = db.StringProperty()
 
 # CLIENT_SECRETS, name of a file containing the OAuth 2.0 information for this
 # application, including client_id and client_secret.
@@ -73,48 +64,10 @@ href="https://code.google.com/apis/console">APIs Console</a>.
 
 """ % CLIENT_SECRETS
 
-#
-#FLAGS = gflags.FLAGS
-
-# Set up a Flow object to be used if we need to authenticate. This
-# sample uses OAuth 2.0, and we set up the OAuth2WebServerFlow with
-# the information it needs to authenticate. Note that it is called
-# the Web Server Flow, but it can also handle the flow for native
-# applications
-# The client_id and client_secret are copied from the API Access tab on
-# the Google APIs Console
-#FLOW = OAuth2WebServerFlow(
-#    client_id='YOUR_CLIENT_ID',
-#    client_secret='YOUR_CLIENT_SECRET',
-#    scope='https://www.googleapis.com/auth/calendar',
-#    user_agent='YOUR_APPLICATION_NAME/YOUR_APPLICATION_VERSION')
-#
-# To disable the local server feature, uncomment the following line:
-# FLAGS.auth_local_webserver = False
-#
-# If the Credentials don't exist or are invalid, run through the native client
-# flow. The Storage object will ensure that if successful the good
-# Credentials will get written back to a file.
-#storage = Storage('calendar.dat')
-#credentials = storage.get()
-#if credentials is None or credentials.invalid == True:
-#  credentials = run(FLOW, storage)
-
-# Create an httplib2.Http object to handle our HTTP requests and authorize it
-# with our good Credentials.
-#http = httplib2.Http()
-#http = credentials.authorize(http)
-
-# Build a service object for interacting with the API. Visit
-# the Google APIs Console
-# to get a developerKey for your own application.
-#service = build(serviceName='calendar', version='v3', http=http,
-#       developerKey='YOUR_DEVELOPER_KEY')
-#"""
 
 http = httplib2.Http(memcache)
-service = build("calendar", "v3", http=http)
-
+service = build("calendar", "v3", http=http,
+    developerKey='AIzaSyDjY0v6wL2_nKcznYK3UxQSkxKsdX89BR8')
 
 # Set up an OAuth2Decorator object to be used for authentication.  Add one or
 # more of the following scopes in the scopes parameter below. PLEASE ONLY ADD
@@ -132,35 +85,36 @@ class MainHandler(webapp.RequestHandler):
 
   @decorator.oauth_required
   def get(self):
-    self.response.out.write("""<html><body>
+    http = decorator.http()
+    """self.response.out.write(<html><body>
 
-  <p>Congratulations, you are up and running! At this point you will want to add
-  calls into the Calendar API to the <code>main.py</code> file. Please read the
-  <code>main.py</code> file carefully, it contains detailed information in
-  the comments.  For more information on the Calendar API Python library
-  surface you can visit: </p>
+  <p>Rushab Rox</p>
+)"""
+    try:
+      page_token = None
+      while True:
+        calendar_list = service.calendarList().list(pageToken=page_token).execute(http=http)
+        if calendar_list['items']:
+          for calendar_list_entry in calendar_list['items']:
+            self.response.out.write("""<html><body><br>""" + """<p>""" + calendar_list_entry['summary'] + """</p>""" + """<br>""")
+            page_token_two = None
+            while True:
+              events = service.events().list(calendarId=calendar_list_entry['id'], pageToken=page_token_two).execute(http=http)
+              if events['items']:
+                for event in events['items']:
+                  self.response.out.write(event['summary'] + """<html><body><br>""")
+                  Event(key_name=event['id'], event_summary=event['summary'], event_cal=calendar_list_entry['summary']).put()
+              page_token_two = events.get('nextPageToken')
+              if not page_token_two:
+                break
+        page_token = calendar_list.get('nextPageToken')
+        if not page_token:
+          break
 
- <blockquote>
-   <p>
-   <a href="https://google-api-client-libraries.appspot.com/documentation/calendar/v3/python/latest/">
-   https://google-api-client-libraries.appspot.com/documentation/calendar/v3/python/latest/
-   </a>
-   </p>
- </blockquote>
+    except AccessTokenRefreshError:
+      self.response.out.write("""<html><body><p>The credentials have been revoked or expired, please re-run"
+        "the application to re-authorize</p>""")
 
-  <p>
-  Also check out the <a
-    href="https://developers.google.com/api-client-library/python/start/get_started">
-    Python Client Library documentation</a>, and get more information on the
-  Calendar API at:
-  </p>
-
-  <blockquote>
-    <p>
-    <a href="https://developers.google.com/google-apps/calendar/firstapp">https://developers.google.com/google-apps/calendar/firstapp</a>
-    </p>
-  </blockquote>
-""")
 
 def main():
   application = webapp.WSGIApplication(

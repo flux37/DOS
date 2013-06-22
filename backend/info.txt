@@ -1,8 +1,8 @@
 TO DO:
 
-Set 1. Fetch data from Google Calendar and store it in SQL.
-	-this script should sync frequently with the google servers.
-	-should handle sorting into categories.
+Set 1. Fetch data from Google Calendar and store it in app engine datastore. --- DONE
+	-this script should sync frequently with the google servers.  --- CRON NOT DONE
+	-should handle sorting into categories. --- NEED TO DESIGN DATABASE MODEL
 Set 2. Fetch queried data from SQL and put in on APACHE server.
 	-this should implement converting data from tables into JSON format.
 Set 3. The JSON data recieved should be implemented in the frontend.

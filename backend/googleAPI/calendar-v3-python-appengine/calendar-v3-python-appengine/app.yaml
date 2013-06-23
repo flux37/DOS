@@ -4,6 +4,11 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: .*
+
+- url: /query/.*
+  script: query.py
+  
+- url: /sync
   script: main.py
+ 
 

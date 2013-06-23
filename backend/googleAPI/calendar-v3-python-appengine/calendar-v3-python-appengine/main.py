@@ -27,7 +27,6 @@ import httplib2
 import logging
 import os
 import pickle
-import json
 
 from apiclient.discovery import build
 from oauth2client.appengine import oauth2decorator_from_clientsecrets
@@ -119,12 +118,11 @@ class MainHandler(webapp.RequestHandler):
 def main():
   application = webapp.WSGIApplication(
       [
-       ('/', MainHandler),
+       ('/sync', MainHandler),
        (decorator.callback_path, decorator.callback_handler()),
       ],
       debug=True)
   run_wsgi_app(application)
-
 
 if __name__ == '__main__':
   main()

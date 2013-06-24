@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DOSv1.0</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="star_on">Star ON</string>
+    <string name="star_off">Star OFF</string>
+
+    <string-array name="month_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string name="title_activity_list_events">ListEventsActivity</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="title_activity_main_fragment">MainFragmentActivity</string>
+    <string name="title_activity_event_fragment">EventFragmentActivity</string>
+
+</resources>

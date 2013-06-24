@@ -1,0 +1,14 @@
+application: cal-backend
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /query/.*
+  script: query.py
+  
+- url: /sync
+  script: sync.py
+ 
+

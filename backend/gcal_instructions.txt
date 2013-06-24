@@ -1,0 +1,14 @@
+INSTALLATION:
+
+a. Install Google App Engine
+
+Running the script:
+
+a. Using Launcher:
+	1. Add project to launcher and execute.
+	2. goto "http://localhost:PORT/sync" where PORT is the service port where the application runs. (default = 8080)
+	3. goto "http://localhost:ADMIN_PORT" to access the datastore and other features.
+
+b. Using command line:
+	1. run "dev_appserver.py sync.py" in the project directory.
+	2. visit URL on browser.

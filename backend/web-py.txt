@@ -1,13 +1,13 @@
 To test run the above module (fun-webpy):
-	a. Install mysql 
-	b. Install mysqldb python
+	a. Install mysql -- NOT REQUIRED
+	b. Install mysqldb python -- NOT REQUIRED
 	c. Install web-py
 	
 	Heres a link if you need (you wont but still) http://zetcode.com/db/mysqlpython/
 	
 Running the app:
 	After you have the modules installed create a new database and a table
-	Run the webpy module: $ python main.py
+	Run the webpy module: $ ./dev_appserver.py query.py
 	Go to the URL (which by default is: http://0.0.0.0:8080/)
 	
 Usage:

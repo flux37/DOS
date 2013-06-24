@@ -79,7 +79,7 @@ href="https://code.google.com/apis/console">APIs Console</a>.
 
 http = httplib2.Http(memcache)
 service = build("calendar", "v3", http=http,
-    developerKey='AIzaSyDjY0v6wL2_nKcznYK3UxQSkxKsdX89BR8')
+    developerKey='AIzaSyC_0sFRn1Z8VrqQ-vxbou0ALWl1Mt9sStY')
 
 # Set up an OAuth2Decorator object to be used for authentication.  Add one or
 # more of the following scopes in the scopes parameter below. PLEASE ONLY ADD

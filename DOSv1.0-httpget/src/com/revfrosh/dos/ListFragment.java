@@ -115,7 +115,8 @@ public class ListFragment extends Fragment {
 	        final ArrayList<Event> events = new ArrayList<Event>();
 	        try {
 	                HttpClient hc = new DefaultHttpClient();
-	                HttpGet get = new HttpGet("cal-backend.appspot.com/query/category/all");
+	                //URL eventsct = new URL ("http://cal-backend.appspot.com/query/category/all");
+	                HttpGet get = new HttpGet("http://cal-backend.appspot.com/query/category/all");
 	                HttpResponse rp = hc.execute(get);
 	                if(rp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
 	                {
@@ -144,7 +145,7 @@ public class ListFragment extends Fragment {
 			
 		  	ListView mainListView = (ListView) getView().findViewById(R.id.listView);
 	        
-	        final ArrayList<Event> details = new ArrayList<Event>();
+	        final ArrayList<Event> details = loadEvents();
 	        
 /*	        
 	        for(int i=0; i<5; i++)
@@ -175,8 +176,9 @@ public class ListFragment extends Fragment {
 	        
 	        	public void onItemClick (AdapterView<?> parent, View v, int position, long id) {
 	        		    
+	        		
 	        		Context c = parent.getContext();
-	        		listener.onListItemSelected(c, loadEvents().get(position));
+	        		listener.onListItemSelected(c, details.get(position));
 	        		/*
 	        		    Intent intent = new Intent(parent.getContext(), EventDetailActivity.class);
 	        		   

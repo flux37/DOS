@@ -121,6 +121,8 @@ public class ListFragment extends Fragment {
 	                {
 	                        String result = EntityUtils.toString(rp.getEntity());
 	                        JSONObject root = new JSONObject(result);
+	                        
+	                        //Not sure whether I have to use "results" here
 	                        JSONArray sessions = root.getJSONArray("results");
 	                        for (int i = 0; i < sessions.length(); i++) {
 	                                JSONObject session = sessions.getJSONObject(i);
@@ -130,7 +132,7 @@ public class ListFragment extends Fragment {
 	                        }
 	                }
 	        } catch (Exception e) {
-	                Log.e("TwitterFeedActivity", "Error loading JSON", e);
+	                Log.e("EventFeedActivity", "Error loading JSON", e);
 	        }
 	        return events;
 	}

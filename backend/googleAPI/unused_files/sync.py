@@ -21,20 +21,25 @@ import os
 import pickle
 import time
 import datetime
+import webapp2
 
 from rfc3339 import rfc3339
 from apiclient.discovery import build
 from oauth2client.appengine import oauth2decorator_from_clientsecrets
 from oauth2client.client import AccessTokenRefreshError
 from google.appengine.api import memcache
-from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 
 class Event(db.Model):
+  title = db.StringProperty()
+  description = db.TextProperty()
+  time = db.DateTimeProperty()
+  location = db.TextProperty()
+  creator = db.UserProperty()
   event_cal = db.StringProperty()
-  event_summary = db.StringProperty()
+#  event_summary = db.StringProperty()
 
 class Time(db.Model):
   last_time = db.DateTimeProperty()
@@ -43,7 +48,6 @@ class Time(db.Model):
 query = Time.all()
 query.filter("key_name =", 'ScriptRunTime')
 timevar = query.get()
-# timevar = db.GqlQuery("SELECT * FROM Time WHERE key_name = 'ScriptRunTime'")
 
 dtstamp = datetime.datetime.fromtimestamp(time.time())
 Time(key_name = 'ScriptRunTime', last_time = dtstamp).put()
@@ -52,7 +56,6 @@ if timevar is None:
   update_time = rfc3339(dtstamp)
 else:
   update_time = rfc3339(timevar.last_time)
-# update_time = rfc3339(dtstamp)
 
 # CLIENT_SECRETS, name of a file containing the OAuth 2.0 information for this
 # application, including client_id and client_secret.
@@ -91,10 +94,11 @@ decorator = oauth2decorator_from_clientsecrets(
     CLIENT_SECRETS,
     scope=[
       'https://www.googleapis.com/auth/calendar.readonly',
+	  'https://www.googleapis.com/auth/calendar',
     ],
     message=MISSING_CLIENT_SECRETS_MESSAGE)
 
-class MainHandler(webapp.RequestHandler):
+class MainHandler(webapp2.RequestHandler):
 
   @decorator.oauth_required
   def get(self):
@@ -111,8 +115,9 @@ class MainHandler(webapp.RequestHandler):
               events = service.events().list(calendarId=calendar_list_entry['id'], updatedMin=update_time, pageToken=page_token_two).execute(http=http)
               if events['items']:
                 for event in events['items']:
-                  self.response.out.write(event['summary'] + """<html><body><br>""")
-                  Event(key_name=event['id'], event_summary=event['summary'], event_cal=calendar_list_entry['summary']).put()
+                  self.response.out.write(event['summary'] + '<html><body><br>')
+                  Event(key_name = event['id'], title = event['summary'], description = event['description'], location = event['location'],
+                    creator = event['creator'], time = event['start.dateTime'], event_cal = calendar_list_entry['summary']).put()
               page_token_two = events.get('nextPageToken')
               if not page_token_two:
                 break
@@ -121,19 +126,19 @@ class MainHandler(webapp.RequestHandler):
           break
 
     except AccessTokenRefreshError:
-      self.response.out.write("""<html><body><p>The credentials have been revoked or expired, please re-run"
-        "the application to re-authorize</p>""")
+      self.response.out.write('<html><body><p>The credentials have been revoked or expired, please re-run'
+        'the application to re-authorize</p>')
     self.response.out.write(dtstamp)
-    self.response.out.write("""<html><body><p>Sync Complete!</p>""")
+    self.response.out.write('<html><body><p>Sync Complete!</p>')
 
-def main():
-  application = webapp.WSGIApplication(
-      [
-       ('/sync', MainHandler),
-       (decorator.callback_path, decorator.callback_handler()),
-      ],
-      debug=True)
-  run_wsgi_app(application)
+#def main():
+app = webapp2.WSGIApplication(
+    [
+     ('/sync', MainHandler),
+     (decorator.callback_path, decorator.callback_handler()),
+    ],
+    debug=True)
+#run_wsgi_app(app)
 
-if __name__ == '__main__':
-  main()
+#if __name__ == '__main__':
+#  main()

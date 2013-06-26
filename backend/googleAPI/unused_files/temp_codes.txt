@@ -1,0 +1,6 @@
+updatedMin=update_time,
+
+des = event['description'],
+location = event['location'],
+creator = event['creator'], 
+time = event['start.dateTime'], 

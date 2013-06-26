@@ -1,14 +1,16 @@
 application: cal-backend
-version: 3
-runtime: python
+version: 4
+runtime: python27
 api_version: 1
+threadsafe: false
 
 handlers:
 
 - url: /query/.*
-  script: query.py
-  
+  script: query.application
+
 - url: /sync
-  script: sync.py
- 
+  script: sync_service.application
+  login: admin
+
 

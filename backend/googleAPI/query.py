@@ -8,8 +8,13 @@ urls = (
 )
 # Its important to define the class... Or else the script crashes with "internal server error"
 class Event(db.Model):
-  event_cal = db.StringProperty()
-  event_summary = db.StringProperty()
+	title = db.StringProperty()
+	des = db.TextProperty()
+	time = db.DateTimeProperty()
+	location = db.TextProperty()
+	creator = db.UserProperty()
+	event_cal = db.StringProperty()
+# event_summary = db.StringProperty()
 
 class category:
 	def GET(self, category):
@@ -26,7 +31,7 @@ class category:
 
 		for every_clubs in clubs_list:
 			club_info = {}
-			club_info["summary"] = every_clubs.event_summary
+			club_info["name"] = every_clubs.title
 			"""club_info["id"] = every_clubs.id
 			club_info["name"] = every_clubs.club_name
 			club_info["category"] = every_clubs.club_category
@@ -43,7 +48,7 @@ class index:
 app = web.application(urls, globals())
 # New(key_name='TEST2', n_int=1).put()
 # db = web.database(dbn='mysql', user='pranayk', pw='pjain', db='events', host='localhost')
-if __name__ == "__main__":
+# if __name__ == "__main__":
 # app.gaerun()
-  application = app.wsgifunc()
-  run_wsgi_app(application)
+application = app.wsgifunc()
+#run_wsgi_app(application)

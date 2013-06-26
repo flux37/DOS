@@ -28,7 +28,7 @@ class category:
 		
 		if clubs_list is None:
 			return "The category you're looking for is not available"
-
+		
 		for every_clubs in clubs_list:
 			club_info = {}
 			club_info["name"] = every_clubs.title
@@ -37,8 +37,8 @@ class category:
 			club_info["category"] = every_clubs.club_category
 			club_info["data_changed"] = every_clubs.club_dchange"""
 			clubs_info_list.append(club_info)
-
-		return json.dumps(clubs_info_list)
+		
+		return json.dumps({ "results" : clubs_info_list})
 		# return clubs_list[0]
 
 class index:

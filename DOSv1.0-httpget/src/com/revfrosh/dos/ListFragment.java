@@ -115,7 +115,7 @@ public class ListFragment extends Fragment {
 	        final ArrayList<Event> events = new ArrayList<Event>();
 	        try {
 	                HttpClient hc = new DefaultHttpClient();
-	                HttpGet get = new HttpGet("https://api.twitter.com/1/statuses/user_timeline.json");
+	                HttpGet get = new HttpGet("cal-backend.appspot.com/query/category/all");
 	                HttpResponse rp = hc.execute(get);
 	                if(rp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
 	                {
@@ -125,9 +125,7 @@ public class ListFragment extends Fragment {
 	                        for (int i = 0; i < sessions.length(); i++) {
 	                                JSONObject session = sessions.getJSONObject(i);
 	                                Event inputEvent = new Event();
-	                                inputEvent.name = session.getString("text");
-	                                inputEvent.clubName = session.getString("from_user");
-	                                inputEvent.date = "12/12/2013";
+	                                inputEvent.name = session.getString("name");
 	                                events.add(inputEvent);
 	                        }
 	                }

@@ -16,17 +16,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockListFragment;
+
 /**
  * @author admin
  *
  */
-public class pageListFragment extends ListFragment {
+public class pageListFragment extends SherlockListFragment {
 	
 	private String[] clubName = {"clubA", "clubB", "clubC"};
 	private String[] date = {"12/12/2013", "13/12/2013", "14/12/2013"};

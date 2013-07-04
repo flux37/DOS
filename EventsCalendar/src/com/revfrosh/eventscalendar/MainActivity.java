@@ -33,7 +33,10 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
+		
+		//ActionBar actionBar = getSupportActionBar();
+		//actionBar.setDisplayHomeAsUpEnabled(true);
+		
 		menu.add("Search") // Add a new Menu Button
 				.setOnMenuItemClickListener(this.SearchButtonClickListener) 
 				.setIcon(R.drawable.search_button) // Set the button icon

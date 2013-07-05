@@ -2,7 +2,6 @@ package com.revfrosh.eventscalendar;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
@@ -11,6 +10,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
+
 
 
 public class MainActivity extends SherlockFragmentActivity {
@@ -22,8 +22,10 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
-        FragmentPagerAdapter pagerAdapter = new  MyFragmentPagerAdapter(getSupportFragmentManager());
+        MyFragmentPagerAdapter pagerAdapter = new  MyFragmentPagerAdapter(getSupportFragmentManager());
  
+        viewPager.setOffscreenPageLimit(3);
+        
         viewPager.setAdapter(pagerAdapter);
         pagerTabStrip.setDrawFullUnderline(true);
         pagerTabStrip.setTabIndicatorColor(Color.RED);
@@ -55,6 +57,5 @@ public class MainActivity extends SherlockFragmentActivity {
 			return false;
 		}
 	};
-
 	
 }

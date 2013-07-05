@@ -58,7 +58,6 @@ public class pageListFragment extends SherlockListFragment {
 		    	final ArrayList<Event> details = result;
 		    	getListView().setSelector(R.drawable.selector_list);
 			    setListAdapter(new customAdapter(details , getActivity()));
-			  
 		    	
 		    }
 		    
@@ -93,7 +92,6 @@ public class pageListFragment extends SherlockListFragment {
 		        return events;
 		}
 	}
-	  
 	  
 	  @Override
 	  public void onListItemClick(ListView l, View v, int position, long id) {

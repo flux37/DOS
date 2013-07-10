@@ -15,6 +15,8 @@ import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 
 public class MainActivity extends SherlockFragmentActivity {
 
+	public final static String SELECT_EVENT = "com.revfrosh.eventcalendar.SELECTEVENT";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,17 +34,19 @@ public class MainActivity extends SherlockFragmentActivity {
         
 	}
 	
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
-		//ActionBar actionBar = getSupportActionBar();
-		//actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		menu.add("Search") // Add a new Menu Button
 				.setOnMenuItemClickListener(this.SearchButtonClickListener) 
 				.setIcon(R.drawable.search_button) // Set the button icon
 				.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM); 
+
+		menu.add("Settings") // Add a new Menu Button
+		.setOnMenuItemClickListener(this.SettingsButtonClickListener) 
+		.setIcon(R.drawable.settings_button) // Set the button icon
+		.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM); 
+
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -51,11 +55,24 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		public boolean onMenuItemClick(MenuItem item) {
 
-			Toast.makeText(getBaseContext(), ":: Search ::", Toast.LENGTH_LONG)
+			Toast.makeText(getBaseContext(), ":: Search ::", Toast.LENGTH_SHORT)
 					.show(); // Create a simple toast message
 
 			return false;
 		}
 	};
+		
+	OnMenuItemClickListener SettingsButtonClickListener = new OnMenuItemClickListener() {
+
+			public boolean onMenuItemClick(MenuItem item) {
+
+				Toast.makeText(getBaseContext(), ":: Settings ::", Toast.LENGTH_SHORT)
+						.show(); // Create a simple toast message
+
+				return false;
+			}
+	};
 	
 }
+
+	

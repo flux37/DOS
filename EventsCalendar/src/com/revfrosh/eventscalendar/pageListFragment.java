@@ -16,6 +16,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,8 @@ import com.actionbarsherlock.app.SherlockListFragment;
  */
 public class pageListFragment extends SherlockListFragment {
 	
+	ArrayList<Event> details;
+	public final static String SELECT_EVENT = "com.revfrosh.eventcalendar.SELECTEVENT";
 	private String[] clubName = {"clubA", "clubB", "clubC"};
 	private String[] date = {"12/12/2013", "13/12/2013", "14/12/2013"};
 	private int tabNo;
@@ -55,7 +59,7 @@ public class pageListFragment extends SherlockListFragment {
 		      * the result from doInBackground() */
 		    protected void onPostExecute(ArrayList<Event> result) {
 		       
-		    	final ArrayList<Event> details = result;
+		    	details = result;
 		    	getListView().setSelector(R.drawable.selector_list);
 			    setListAdapter(new customAdapter(details , getActivity()));
 		    	
@@ -96,6 +100,16 @@ public class pageListFragment extends SherlockListFragment {
 	  @Override
 	  public void onListItemClick(ListView l, View v, int position, long id) {
 	    // Do something with the data
-		Toast.makeText(getActivity(), " :: "+ (position+1)+ " :: ", Toast.LENGTH_SHORT).show();  
+		
+		Context context = getActivity();
+		Event event = details.get(position);
+		
+		Toast.makeText(context, " :: "+ (position+1)+ " :: ", Toast.LENGTH_SHORT).show();
+				
+		Intent intent = new Intent(context, EventDetailFragment.class);
+		intent.putExtra(SELECT_EVENT, event);
+        
+        startActivity(intent);
+        		
 	  }
 }

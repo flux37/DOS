@@ -7,41 +7,41 @@
 	android:focusable="false"
     android:focusableInTouchMode="false"
     android:listSelector="@drawable/selector_list" >
+   
+	<TextView 
+		android:id="@+id/DateSeparator"
+		style="?android:attr/listSeparatorTextViewStyle"
+		android:textIsSelectable = "true"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="@android:color/darker_gray"
+		android:padding="2dp"
+		android:focusable="false"
+	    android:focusableInTouchMode="false"
+		android:textSize="15sp" />
+
 
 	<TextView 
-	android:id="@+id/DateSeparator"
-	style="?android:attr/listSeparatorTextViewStyle"
-	android:textIsSelectable = "true"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:textColor="@android:color/darker_gray"
-	android:padding="2dp"
-	android:focusable="false"
-    android:focusableInTouchMode="false"
-	android:textSize="15sp"  >
-	</TextView>
+		android:id="@+id/EventName"
+		android:textIsSelectable = "true"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="5dp"
+		android:focusable="false"
+	    android:focusableInTouchMode="false"
+		android:textSize="20sp" />
 
 
 	<TextView 
-	android:id="@+id/EventName"
-	android:textIsSelectable = "true"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:padding="5dp"
-	android:focusable="false"
-    android:focusableInTouchMode="false"
-	android:textSize="20sp" >
-	</TextView>
-
-	<TextView 
-	android:id="@+id/ClubName"
-	android:textIsSelectable = "false"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:padding="10dp"
-	android:focusable="false"
-    android:focusableInTouchMode="false"
-	android:textSize="15sp" >
-	</TextView>
+		android:id="@+id/ClubName"
+		android:textIsSelectable = "false"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp"
+		android:focusable="false"
+	    android:focusableInTouchMode="false"
+		android:textSize="15sp" />
+	
+	<!-- </com.fortysevendeg.android.swipelistview.SwipeListView> -->
 	
 </LinearLayout>

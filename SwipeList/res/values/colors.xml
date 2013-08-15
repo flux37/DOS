@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Default -->
+    <color name="holo_red_light">#FF4444</color>
+    <color name="holo_red_dark">#CC0000</color>
+    <color name="holo_orange_light">#FFBB33</color>
+    <color name="holo_orange_dark">#FF8800</color>
+    <color name="holo_green_light">#99CC00</color>
+    <color name="holo_green_dark">#669900</color>
+    <color name="holo_violet_light">#AA66CC</color>
+    <color name="holo_violet_dark">#9933CC</color>
+    <color name="holo_blue_light">#33B5E5</color>
+    <color name="holo_blue_dark">#0099CC</color>
+    
+    <color name="bouquet">#B58AA5</color>
+    <color name="bizarre">#EFD9DC</color>
+    <color name="blossom">#DAB4C9</color>
+    <color name="crimson">#DC143C</color>
+    <color name="ghostwhite">#F8F8FF</color>
+    <color name="semi_gray">#CC000000</color>
+    <color name="pale_blue">#c5c5ff</color>
+    <color name="pale_violet">#e2c5ff</color>
+    
+    <!-- Commons -->
+    <color name="background_app">#dedede</color>
+
+    <color name="background_list_back">#e3e3e3</color>
+    <color name="background_list_front">#e2c5ff</color>
+
+    <color name="background_new_tag">#ff0000</color>
+    
+    <drawable name="focused">#FEBFBF</drawable>
+    <drawable name="selected">#FE8080</drawable>
+    
+    <!-- EyeInSky -->
+    <color name="list_front">#202020</color>
+    <color name="list_back">#5B5B5B</color>
+    <color name="text_secondary">#9F9F9F</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="button">#343434</color>
+
+</resources>

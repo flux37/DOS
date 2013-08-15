@@ -1,0 +1,64 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".EventDetailFragment"
+    android:background="@drawable/back1" >
+    
+    <LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingBottom="@dimen/activity_vertical_margin"
+		android:paddingLeft="@dimen/activity_horizontal_margin"
+		android:paddingRight="@dimen/activity_horizontal_margin"
+		android:paddingTop="@dimen/activity_vertical_margin" >
+		
+        <FrameLayout
+			 android:layout_width="fill_parent"
+			 android:layout_height="120dp">
+			
+			<ImageView
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:scaleType="centerCrop"
+			    android:src="@drawable/event_background" />
+					
+			<TextView
+			    android:id="@+id/eventName"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/semi_gray"
+				android:textSize="20sp"
+				android:textColor="@color/holo_orange_light"
+				android:textStyle="bold"
+				android:text="@string/hello_world"
+				android:layout_gravity="bottom"	 />
+	
+		</FrameLayout>
+	
+		<TextView
+			android:id="@+id/clubName"			    
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="35sp"
+			android:textColor="@color/holo_red_dark"
+			android:textStyle="bold"
+			android:text="@string/hello_world" />
+
+		<TextView
+		    android:id="@+id/eventDate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="25sp"
+			android:textColor="@color/holo_red_light"
+			android:textStyle="bold"
+			android:text="@string/hello_world" />
+
+	</LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- List -->
+
+    <style name="ListBackContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/height_list</item>
+        <item name="android:background">@color/list_back</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ListFrontContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/height_list</item>
+        <item name="android:background">@color/list_front</item>
+        <item name="android:padding">@dimen/padding_default</item>
+    </style>
+
+    <style name="ListButtonAction">
+        <item name="android:layout_margin">4dp</item>
+    </style>
+    
+    <style name="RoundButton">
+    <item name="android:background">@drawable/btn_circle</item>
+    <item name="android:layout_margin">4dp</item>
+</style>
+
+</resources>

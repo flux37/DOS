@@ -4,8 +4,7 @@
     android:id = "@+id/pager"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
-    tools:context = ".MainActivity" >
-    
+    tools:context = ".MainActivity">
     <android.support.v4.view.PagerTabStrip
         android:id = "@+id/pager_tab_strip"
         android:layout_width = "match_parent"
@@ -15,6 +14,5 @@
         android:textColor = "#FFFFFF"
         android:textSize="12sp"
         android:paddingTop = "10dp"
-        android:paddingBottom = "10dp" />
-    
+        android:paddingBottom = "10dp"/>
 </android.support.v4.view.ViewPager>

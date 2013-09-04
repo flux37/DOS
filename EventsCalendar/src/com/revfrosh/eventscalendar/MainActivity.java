@@ -58,6 +58,8 @@ public class MainActivity extends SherlockFragmentActivity {
 			Toast.makeText(getBaseContext(), ":: Search ::", Toast.LENGTH_SHORT)
 					.show(); // Create a simple toast message
 
+			onSearchRequested();
+			
 			return false;
 		}
 	};

@@ -1004,14 +1004,17 @@ containing a value of this type.
         public static final int abs__search_view=0x7f030013;
         public static final int abs__simple_dropdown_hint=0x7f030014;
         public static final int activity_main=0x7f030015;
-        public static final int event_detail_fragment=0x7f030016;
-        public static final int list_events=0x7f030017;
-        public static final int sherlock_spinner_dropdown_item=0x7f030018;
-        public static final int sherlock_spinner_item=0x7f030019;
+        public static final int activity_searchable=0x7f030016;
+        public static final int event_detail_fragment=0x7f030017;
+        public static final int list_events=0x7f030018;
+        public static final int searchable=0x7f030019;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001a;
+        public static final int sherlock_spinner_item=0x7f03001b;
     }
     public static final class menu {
         public static final int event_detail=0x7f0b0000;
         public static final int main=0x7f0b0001;
+        public static final int searchable=0x7f0b0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1053,10 +1056,13 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abs__shareactionprovider_share_with_application=0x7f090007;
-        public static final int action_settings=0x7f09000e;
+        public static final int action_settings=0x7f09000f;
+        public static final int app_label=0x7f09000e;
         public static final int app_name=0x7f09000d;
-        public static final int hello_world=0x7f09000f;
-        public static final int title_activity_event_detail_fragment=0x7f090010;
+        public static final int hello_world=0x7f090010;
+        public static final int search_hint=0x7f090012;
+        public static final int title_activity_event_detail_fragment=0x7f090011;
+        public static final int title_activity_searchable=0x7f090013;
     }
     public static final class style {
         /** 

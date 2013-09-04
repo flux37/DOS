@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">EventsCalendar</string>
+    <string name="app_name">Events Calendar</string>
+    <string name="app_label">Events Calendar</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_event_detail_fragment">EventDetailFragment</string>
+    <string name="title_activity_event_detail_fragment">Event Details</string>
+    <string name="search_hint">Search Events and Categories</string>
+    <string name="title_activity_searchable">SearchableActivity</string>
 
 </resources>
